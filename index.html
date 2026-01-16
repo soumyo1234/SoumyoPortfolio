@@ -1,0 +1,1381 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Soumyojit Sadhu - Software QA Tester & MERN Stack Developer Portfolio">
+    <meta name="keywords" content="QA Tester, MERN Stack, Selenium, Java, React, Node.js, Portfolio">
+    <meta name="author" content="Soumyojit Sadhu">
+    
+    <title>Soumyojit Sadhu | Software QA Tester & MERN Stack Developer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Syne', 'sans-serif'],
+                        'mono': ['Space Mono', 'monospace'],
+                        'body': ['DM Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        'midnight': '#0a0a0f',
+                        'charcoal': '#141419',
+                        'slate': '#1e1e26',
+                        'steel': '#2a2a35',
+                        'silver': '#8b8b9a',
+                        'pearl': '#c4c4d4',
+                        'snow': '#f0f0f5',
+                        'electric': '#00d4ff',
+                        'neon': '#39ff14',
+                        'coral': '#ff6b6b',
+                        'amber': '#ffc107',
+                        'violet': '#8b5cf6',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                        'slide-in': 'slideIn 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                        'typewriter': 'typewriter 3s steps(40) 1s forwards',
+                        'blink': 'blink 1s step-end infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(0, 212, 255, 0.3)' },
+                            '100%': { boxShadow: '0 0 40px rgba(0, 212, 255, 0.6)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideIn: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        typewriter: {
+                            '0%': { width: '0' },
+                            '100%': { width: '100%' },
+                        },
+                        blink: {
+                            '0%, 100%': { borderColor: 'transparent' },
+                            '50%': { borderColor: '#00d4ff' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-midnight text-pearl font-body antialiased overflow-x-hidden">
+    
+    <!-- Cursor Follower -->
+    <div id="cursor" class="fixed w-6 h-6 rounded-full border-2 border-electric pointer-events-none z-[9999] transition-transform duration-150 ease-out hidden lg:block"></div>
+    <div id="cursor-dot" class="fixed w-2 h-2 bg-electric rounded-full pointer-events-none z-[9999] hidden lg:block"></div>
+    
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="group flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-electric to-violet rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
+                        <span class="font-display font-bold text-xl text-midnight">SS</span>
+                    </div>
+                    <span class="font-display font-semibold text-lg text-snow hidden sm:block">Soumyojit</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-1">
+                    <a href="#about" class="nav-link px-4 py-2 text-silver hover:text-snow transition-colors duration-300 font-medium">About</a>
+                    <a href="#skills" class="nav-link px-4 py-2 text-silver hover:text-snow transition-colors duration-300 font-medium">Skills</a>
+                    <a href="#experience" class="nav-link px-4 py-2 text-silver hover:text-snow transition-colors duration-300 font-medium">Experience</a>
+                    <a href="#projects" class="nav-link px-4 py-2 text-silver hover:text-snow transition-colors duration-300 font-medium">Projects</a>
+                    <a href="#education" class="nav-link px-4 py-2 text-silver hover:text-snow transition-colors duration-300 font-medium">Education</a>
+                    <a href="https://www.linkedin.com/in/soumyojitsadhu" target="_blank" rel="noopener noreferrer" class="ml-4 px-6 py-2.5 bg-gradient-to-r from-electric to-violet text-midnight font-semibold rounded-full hover:shadow-lg hover:shadow-electric/30 transform hover:-translate-y-0.5 transition-all duration-300">
+                        Hire Me
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 rounded-xl bg-slate/50 backdrop-blur-sm">
+                    <span class="menu-line w-6 h-0.5 bg-snow transition-all duration-300"></span>
+                    <span class="menu-line w-6 h-0.5 bg-snow transition-all duration-300"></span>
+                    <span class="menu-line w-4 h-0.5 bg-snow transition-all duration-300 ml-auto mr-3"></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-midnight/98 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-500 overflow-y-auto">
+            <div class="flex flex-col items-center justify-center h-full gap-8">
+                <a href="#about" class="mobile-nav-link text-3xl font-display font-semibold text-snow hover:text-electric transition-colors">About</a>
+                <a href="#skills" class="mobile-nav-link text-3xl font-display font-semibold text-snow hover:text-electric transition-colors">Skills</a>
+                <a href="#experience" class="mobile-nav-link text-3xl font-display font-semibold text-snow hover:text-electric transition-colors">Experience</a>
+                <a href="#projects" class="mobile-nav-link text-3xl font-display font-semibold text-snow hover:text-electric transition-colors">Projects</a>
+                <a href="#education" class="mobile-nav-link text-3xl font-display font-semibold text-snow hover:text-electric transition-colors">Education</a>
+                <a href="https://www.linkedin.com/in/soumyojitsadhu" target="_blank" rel="noopener noreferrer" class="mt-4 px-10 py-4 bg-gradient-to-r from-electric to-violet text-midnight font-bold text-xl rounded-full">
+                    Hire Me
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+   <!-- ============================================
+     HERO SECTION - JARVIS INSPIRED
+     Replace the existing Hero Section in index.html
+     (From <section id="home"> to its closing </section>)
+     ============================================ -->
+
+    <!-- Hero Section - JARVIS Inspired -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        
+        <!-- JARVIS Animated Background -->
+        <div class="jarvis-bg absolute inset-0">
+            <!-- Base Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-[#0a0a0f] via-[#0d1117] to-[#0a0a0f]"></div>
+            
+            <!-- Animated Grid -->
+            <div class="absolute inset-0 jarvis-grid"></div>
+            
+            <!-- Radar Sweep -->
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="jarvis-radar"></div>
+            </div>
+            
+            <!-- Rotating Circles -->
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="jarvis-circle jarvis-circle-1"></div>
+                <div class="jarvis-circle jarvis-circle-2"></div>
+                <div class="jarvis-circle jarvis-circle-3"></div>
+                <div class="jarvis-circle jarvis-circle-4"></div>
+            </div>
+            
+            <!-- Arc Reactor Core -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="jarvis-core"></div>
+                <div class="jarvis-core-inner"></div>
+                <div class="jarvis-core-pulse"></div>
+            </div>
+            
+            <!-- Floating Data Points -->
+            <div class="jarvis-data-points">
+                <div class="data-point" style="top: 15%; left: 10%;"><span>SYS.ONLINE</span></div>
+                <div class="data-point" style="top: 25%; right: 15%;"><span>QA.ACTIVE</span></div>
+                <div class="data-point" style="bottom: 30%; left: 8%;"><span>DEV.READY</span></div>
+                <div class="data-point" style="bottom: 20%; right: 10%;"><span>API.CONNECTED</span></div>
+                <div class="data-point" style="top: 40%; left: 5%;"><span>MERN.STACK</span></div>
+                <div class="data-point" style="top: 60%; right: 5%;"><span>AUTO.TEST</span></div>
+            </div>
+            
+            <!-- Hexagon Pattern -->
+            <svg class="absolute inset-0 w-full h-full opacity-10">
+                <defs>
+                    <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
+                        <polygon points="25,0 50,14.4 50,38.4 25,52.8 0,38.4 0,14.4" fill="none" stroke="rgba(0,212,255,0.3)" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#hexagons)"/>
+            </svg>
+            
+            <!-- Particle Effect -->
+            <div class="jarvis-particles" id="particles"></div>
+            
+            <!-- Scan Lines -->
+            <div class="absolute inset-0 jarvis-scanlines pointer-events-none"></div>
+            
+            <!-- Corner HUD Elements -->
+            <div class="jarvis-hud-corner jarvis-hud-tl">
+                <svg viewBox="0 0 100 100" class="w-24 h-24">
+                    <path d="M0,30 L0,0 L30,0" fill="none" stroke="rgba(0,212,255,0.6)" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="3" fill="#00d4ff"/>
+                </svg>
+            </div>
+            <div class="jarvis-hud-corner jarvis-hud-tr">
+                <svg viewBox="0 0 100 100" class="w-24 h-24">
+                    <path d="M70,0 L100,0 L100,30" fill="none" stroke="rgba(0,212,255,0.6)" stroke-width="2"/>
+                    <circle cx="100" cy="0" r="3" fill="#00d4ff"/>
+                </svg>
+            </div>
+            <div class="jarvis-hud-corner jarvis-hud-bl">
+                <svg viewBox="0 0 100 100" class="w-24 h-24">
+                    <path d="M0,70 L0,100 L30,100" fill="none" stroke="rgba(0,212,255,0.6)" stroke-width="2"/>
+                    <circle cx="0" cy="100" r="3" fill="#00d4ff"/>
+                </svg>
+            </div>
+            <div class="jarvis-hud-corner jarvis-hud-br">
+                <svg viewBox="0 0 100 100" class="w-24 h-24">
+                    <path d="M70,100 L100,100 L100,70" fill="none" stroke="rgba(0,212,255,0.6)" stroke-width="2"/>
+                    <circle cx="100" cy="100" r="3" fill="#00d4ff"/>
+                </svg>
+            </div>
+            
+            <!-- Moving Lines -->
+            <div class="jarvis-lines">
+                <div class="h-line h-line-1"></div>
+                <div class="h-line h-line-2"></div>
+                <div class="v-line v-line-1"></div>
+                <div class="v-line v-line-2"></div>
+            </div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left order-2 lg:order-1">
+                    <!-- Status Badge -->
+                    <div class="inline-flex flex-wrap items-center justify-center gap-3 px-5 py-2.5 max-w-full bg-slate/30 backdrop-blur-md rounded-full border border-electric/30 mb-8 jarvis-glow" data-aos="fade-up">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-neon"></span>
+                        </span>
+                        <span class="text-sm text-electric font-mono tracking-wider text-center leading-snug">SYSTEM ONLINE | AVAILABLE FOR HIRE</span>
+                    </div>
+                    
+                    <!-- Greeting -->
+                    <p class="text-electric font-mono text-lg mb-4 tracking-widest" data-aos="fade-up" data-aos-delay="100">
+                        <span class="opacity-60">&lt;</span> INITIALIZING <span class="opacity-60">/&gt;</span>
+                    </p>
+                    
+                    <!-- Name with Glitch Effect -->
+                    <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-snow mb-6 leading-tight" data-aos="fade-up" data-aos-delay="200">
+                        <span class="block glitch-text" data-text="Soumyojit">Soumyojit</span>
+                        <span class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-electric via-cyan-400 to-violet jarvis-text-glow">
+                            Sadhu
+                        </span>
+                    </h1>
+                    
+                    <!-- Role Typewriter -->
+                    <div class="h-14 mb-8" data-aos="fade-up" data-aos-delay="300">
+                        <p class="text-xl sm:text-2xl text-pearl font-mono">
+                            <span class="text-electric">&gt;</span> 
+                            <span id="typewriter" class="font-semibold text-snow"></span>
+                            <span class="typing-cursor">|</span>
+                        </p>
+                    </div>
+                    
+                    <!-- Description -->
+                    <p class="text-silver text-lg max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed" data-aos="fade-up" data-aos-delay="400">
+                        <span class="text-electric font-mono text-sm">// </span>
+                        Transforming ideas into reality through quality-driven development & testing. 
+                        Specialized in building robust applications and ensuring software excellence.
+                    </p>
+                    
+                    <!-- Freelancer Highlight -->
+                    <div class="flex flex-wrap gap-3 justify-center lg:justify-start mb-10" data-aos="fade-up" data-aos-delay="450">
+                        <div class="px-4 py-2 bg-gradient-to-r from-electric/10 to-violet/10 rounded-lg border border-electric/30 backdrop-blur-sm">
+                            <span class="text-xs text-silver font-mono">STATUS:</span>
+                            <span class="text-electric font-semibold ml-2">Open to Freelance</span>
+                        </div>
+                        <div class="px-4 py-2 bg-gradient-to-r from-neon/10 to-electric/10 rounded-lg border border-neon/30 backdrop-blur-sm">
+                            <span class="text-xs text-silver font-mono">MODE:</span>
+                            <span class="text-neon font-semibold ml-2">Remote Worldwide</span>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="500">
+                        <a href="#contact" class="group relative px-8 py-4 bg-transparent overflow-hidden rounded-full flex items-center justify-center gap-3 jarvis-btn-primary">
+                            <span class="relative z-10 font-bold text-midnight group-hover:text-snow transition-colors duration-300">Hire Me Now</span>
+                            <i data-lucide="rocket" class="relative z-10 w-5 h-5 text-midnight group-hover:text-snow transition-colors duration-300"></i>
+                            <div class="absolute inset-0 bg-gradient-to-r from-electric to-cyan-400"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-violet to-electric opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </a>
+                        <a href="#projects" class="group px-8 py-4 bg-transparent border-2 border-electric/50 text-electric font-semibold rounded-full flex items-center justify-center gap-3 hover:bg-electric/10 hover:border-electric transition-all duration-300 backdrop-blur-sm">
+                            <i data-lucide="folder-open" class="w-5 h-5"></i>
+                            View Projects
+                        </a>
+                        <a href="https://drive.google.com/file/d/15_9fv02rBCDgsY79yNjDZTy75zvidogz/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-transparent border-2 border-steel text-snow font-semibold rounded-full flex items-center justify-center gap-3 hover:border-violet hover:text-violet transition-all duration-300 backdrop-blur-sm">
+                            <i data-lucide="download" class="w-5 h-5"></i>
+                            Resume
+                        </a>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="flex gap-4 mt-10 justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="600">
+                        <a href="https://github.com/soumyo1234" target="_blank" class="group w-12 h-12 bg-slate/30 backdrop-blur-sm rounded-xl flex items-center justify-center text-silver hover:text-electric border border-steel/50 hover:border-electric hover:shadow-lg hover:shadow-electric/20 transition-all duration-300">
+                            <i data-lucide="github" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/soumyojitsadhu" target="_blank" class="group w-12 h-12 bg-slate/30 backdrop-blur-sm rounded-xl flex items-center justify-center text-silver hover:text-electric border border-steel/50 hover:border-electric hover:shadow-lg hover:shadow-electric/20 transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="https://www.instagram.com/soul_archived/" target="_blank" class="group w-12 h-12 bg-slate/30 backdrop-blur-sm rounded-xl flex items-center justify-center text-silver hover:text-electric border border-steel/50 hover:border-electric hover:shadow-lg hover:shadow-electric/20 transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="mailto:soumyo8317@gmail.com" target="_blank" rel="noopener noreferrer" class="group w-12 h-12 bg-slate/30 backdrop-blur-sm rounded-xl flex items-center justify-center text-silver hover:text-electric border border-steel/50 hover:border-electric hover:shadow-lg hover:shadow-electric/20 transition-all duration-300">
+                            <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="tel:+918101130288" class="group w-12 h-12 bg-slate/30 backdrop-blur-sm rounded-xl flex items-center justify-center text-silver hover:text-electric border border-steel/50 hover:border-electric hover:shadow-lg hover:shadow-electric/20 transition-all duration-300">
+                            <i data-lucide="phone" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Profile Image with JARVIS HUD -->
+                <div class="relative order-1 lg:order-2 flex justify-center" data-aos="zoom-in" data-aos-delay="300">
+                    <!-- Outer Rotating Ring -->
+                    <div class="absolute w-80 h-80 sm:w-96 sm:h-96 lg:w-[450px] lg:h-[450px]">
+                        <svg class="w-full h-full animate-spin-slow" style="animation-duration: 20s;" viewBox="0 0 200 200">
+                            <defs>
+                                <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.8"/>
+                                    <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.4"/>
+                                    <stop offset="100%" stop-color="#00d4ff" stop-opacity="0.8"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="100" r="95" fill="none" stroke="url(#ringGradient)" stroke-width="1" stroke-dasharray="10 5"/>
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(0,212,255,0.2)" stroke-width="0.5"/>
+                        </svg>
+                    </div>
+                    
+                    <!-- Middle Rotating Ring (Opposite Direction) -->
+                    <div class="absolute w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+                        <svg class="w-full h-full" style="animation: spin-reverse 15s linear infinite;" viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(139,92,246,0.4)" stroke-width="1" stroke-dasharray="20 10 5 10"/>
+                        </svg>
+                    </div>
+                    
+                    <!-- HUD Markers -->
+                    <div class="absolute w-80 h-80 sm:w-96 sm:h-96 lg:w-[450px] lg:h-[450px]">
+                        <div class="jarvis-marker" style="top: 5%; left: 50%; transform: translateX(-50%);">
+                            <div class="marker-dot"></div>
+                            <span class="marker-label">N</span>
+                        </div>
+                        <div class="jarvis-marker" style="top: 50%; right: 5%; transform: translateY(-50%);">
+                            <div class="marker-dot"></div>
+                            <span class="marker-label">E</span>
+                        </div>
+                        <div class="jarvis-marker" style="bottom: 5%; left: 50%; transform: translateX(-50%);">
+                            <div class="marker-dot"></div>
+                            <span class="marker-label">S</span>
+                        </div>
+                        <div class="jarvis-marker" style="top: 50%; left: 5%; transform: translateY(-50%);">
+                            <div class="marker-dot"></div>
+                            <span class="marker-label">W</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Container -->
+                    <div class="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
+                        <!-- Glowing Background -->
+                        <div class="absolute -inset-4 bg-gradient-to-r from-electric via-violet to-electric rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                        
+                        <!-- Profile Image -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate to-charcoal rounded-full overflow-hidden border-2 border-electric/50 jarvis-profile-glow">
+                            <!-- Replace with your actual image -->
+                            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-electric/10 to-violet/10">
+                                <span class="font-display text-7xl font-bold text-snow/80">SS</span>
+                            </div>
+                            <!-- Uncomment and add your image path -->
+                            <!-- <img src="assets/profile.jpg" alt="Soumyojit Sadhu" class="w-full h-full object-cover"> -->
+                            
+                            <!-- Scan Effect -->
+                            <div class="absolute inset-0 jarvis-scan"></div>
+                        </div>
+                        
+                        <!-- Corner Brackets -->
+                        <div class="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-electric"></div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 border-r-2 border-t-2 border-electric"></div>
+                        <div class="absolute -bottom-2 -left-2 w-8 h-8 border-l-2 border-b-2 border-electric"></div>
+                        <div class="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-electric"></div>
+                    </div>
+                    
+                    <!-- Floating Stats Badges -->
+                    <div class="absolute -top-4 -right-4 lg:top-4 lg:-right-8 w-28 h-28 bg-slate/80 backdrop-blur-md rounded-2xl border border-electric/30 flex flex-col items-center justify-center animate-float shadow-xl shadow-electric/10">
+                        <div class="text-xs text-electric font-mono mb-1">TEST CASES</div>
+                        <span class="text-3xl font-display font-bold text-snow">600<span class="text-electric">+</span></span>
+                        <div class="w-16 h-1 bg-electric/20 rounded-full mt-2 overflow-hidden">
+                            <div class="h-full bg-electric rounded-full animate-pulse" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-4 -left-4 lg:bottom-4 lg:-left-8 w-28 h-28 bg-slate/80 backdrop-blur-md rounded-2xl border border-neon/30 flex flex-col items-center justify-center animate-float shadow-xl shadow-neon/10" style="animation-delay: -2s;">
+                        <div class="text-xs text-neon font-mono mb-1">BUGS FOUND</div>
+                        <span class="text-3xl font-display font-bold text-snow">120<span class="text-neon">+</span></span>
+                        <div class="w-16 h-1 bg-neon/20 rounded-full mt-2 overflow-hidden">
+                            <div class="h-full bg-neon rounded-full animate-pulse" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute top-1/2 -right-12 lg:-right-16 transform -translate-y-1/2 w-24 h-24 bg-slate/80 backdrop-blur-md rounded-xl border border-violet/30 flex flex-col items-center justify-center animate-float shadow-xl shadow-violet/10" style="animation-delay: -4s;">
+                        <div class="text-[10px] text-violet font-mono mb-1">EFFICIENCY</div>
+                        <span class="text-2xl font-display font-bold text-snow">+20<span class="text-violet">%</span></span>
+                    </div>
+                    
+                    <!-- Freelance Badge -->
+                    <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 px-6 py-3 bg-gradient-to-r from-electric/20 to-violet/20 backdrop-blur-md rounded-full border border-electric/40 flex items-center gap-3">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-neon"></span>
+                        </span>
+                        <span class="text-sm font-mono text-electric">FREELANCER.ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3">
+            <span class="text-electric/60 text-xs font-mono tracking-widest">SCROLL.DOWN</span>
+            <div class="w-6 h-10 border-2 border-electric/40 rounded-full flex justify-center pt-2">
+                <div class="w-1 h-3 bg-electric rounded-full animate-bounce"></div>
+            </div>
+            <div class="flex gap-1">
+                <div class="w-1 h-1 bg-electric/40 rounded-full"></div>
+                <div class="w-1 h-1 bg-electric/60 rounded-full"></div>
+                <div class="w-1 h-1 bg-electric rounded-full"></div>
+            </div>
+        </div>
+        
+        <!-- Audio Visualizer Effect (Decorative) -->
+        <div class="absolute bottom-0 left-0 right-0 h-20 flex items-end justify-center gap-1 opacity-30 overflow-hidden">
+            <div class="audio-bar" style="--delay: 0s;"></div>
+            <div class="audio-bar" style="--delay: 0.1s;"></div>
+            <div class="audio-bar" style="--delay: 0.2s;"></div>
+            <div class="audio-bar" style="--delay: 0.3s;"></div>
+            <div class="audio-bar" style="--delay: 0.4s;"></div>
+            <div class="audio-bar" style="--delay: 0.5s;"></div>
+            <div class="audio-bar" style="--delay: 0.6s;"></div>
+            <div class="audio-bar" style="--delay: 0.7s;"></div>
+            <div class="audio-bar" style="--delay: 0.8s;"></div>
+            <div class="audio-bar" style="--delay: 0.9s;"></div>
+            <div class="audio-bar" style="--delay: 1s;"></div>
+            <div class="audio-bar" style="--delay: 0.9s;"></div>
+            <div class="audio-bar" style="--delay: 0.8s;"></div>
+            <div class="audio-bar" style="--delay: 0.7s;"></div>
+            <div class="audio-bar" style="--delay: 0.6s;"></div>
+            <div class="audio-bar" style="--delay: 0.5s;"></div>
+            <div class="audio-bar" style="--delay: 0.4s;"></div>
+            <div class="audio-bar" style="--delay: 0.3s;"></div>
+            <div class="audio-bar" style="--delay: 0.2s;"></div>
+            <div class="audio-bar" style="--delay: 0.1s;"></div>
+            <div class="audio-bar" style="--delay: 0s;"></div>
+        </div>
+    </section>
+
+<!-- ============================================
+     END OF HERO SECTION
+     ============================================ -->
+    
+    <!-- About Section -->
+    <section id="about" class="relative py-24 lg:py-32 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-gradient-to-b from-midnight via-charcoal to-midnight"></div>
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-electric/30 to-transparent"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="font-mono text-electric text-sm tracking-widest uppercase">Get to Know Me</span>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-snow mt-4">About Me</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-electric to-violet mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- About Image / Visual -->
+                <div class="relative" data-aos="fade-right">
+                    <div class="relative bg-gradient-to-br from-slate to-charcoal rounded-3xl p-8 border border-steel overflow-hidden">
+                        <!-- Code Window Mock -->
+                        <div class="bg-midnight rounded-xl p-4 font-mono text-sm">
+                            <div class="flex gap-2 mb-4">
+                                <div class="w-3 h-3 rounded-full bg-coral"></div>
+                                <div class="w-3 h-3 rounded-full bg-amber"></div>
+                                <div class="w-3 h-3 rounded-full bg-neon"></div>
+                            </div>
+                            <pre class="text-silver overflow-x-auto"><code><span class="text-violet">const</span> <span class="text-electric">developer</span> = {
+  <span class="text-amber">name</span>: <span class="text-neon">"Soumyojit Sadhu"</span>,
+  <span class="text-amber">role</span>: <span class="text-neon">"QA Tester & Developer"</span>,
+  <span class="text-amber">location</span>: <span class="text-neon">"Kolkata, India"</span>,
+  <span class="text-amber">skills</span>: [
+    <span class="text-neon">"Manual Testing"</span>,
+    <span class="text-neon">"Selenium Automation"</span>,
+    <span class="text-neon">"MERN Stack"</span>,
+    <span class="text-neon">"Data Analysis"</span>
+  ],
+  <span class="text-amber">passion</span>: <span class="text-neon">"Building Quality Software"</span>,
+  <span class="text-amber">available</span>: <span class="text-coral">true</span>
+};</code></pre>
+                        </div>
+                        
+                        <!-- Decorative Elements -->
+                        <div class="absolute -top-20 -right-20 w-40 h-40 bg-electric/10 rounded-full blur-3xl"></div>
+                        <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-violet/10 rounded-full blur-3xl"></div>
+                    </div>
+                </div>
+                
+                <!-- About Content -->
+                <div data-aos="fade-left">
+                    <h3 class="font-display text-2xl lg:text-3xl font-bold text-snow mb-6">
+                        Crafting Quality Software Through Testing & Development
+                    </h3>
+                    
+                    <div class="space-y-4 text-silver leading-relaxed">
+                        <p>
+                            I'm a passionate <span class="text-electric font-semibold">Software QA Tester</span> and 
+                            <span class="text-violet font-semibold">MERN Stack Developer</span> from Kolkata, India. 
+                            With a unique blend of testing expertise and development skills, I bridge the gap between 
+                            quality assurance and software engineering.
+                        </p>
+                        <p>
+                            My journey includes <span class="text-snow">nine months of intensive professional training</span> 
+                            at QSpiders, where I mastered manual testing, Selenium automation with Java, and full-stack 
+                            JavaScript development. I believe in data-driven quality, using analytics to identify patterns 
+                            and prioritize testing efforts effectively.
+                        </p>
+                        <p>
+                            Currently working as a <span class="text-neon">Research Analyst at Royal Research</span>, 
+                            I collaborate with cross-functional teams in software development, data science, and UI/UX 
+                            to deliver robust applications.
+                        </p>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">
+                        <div class="bg-slate/50 backdrop-blur-sm rounded-2xl p-4 border border-steel text-center hover:border-electric transition-colors duration-300">
+                            <span class="block text-3xl font-display font-bold text-electric">9+</span>
+                            <span class="text-sm text-silver">Months Training</span>
+                        </div>
+                        <div class="bg-slate/50 backdrop-blur-sm rounded-2xl p-4 border border-steel text-center hover:border-electric transition-colors duration-300">
+                            <span class="block text-3xl font-display font-bold text-neon">600+</span>
+                            <span class="text-sm text-silver">Test Cases</span>
+                        </div>
+                        <div class="bg-slate/50 backdrop-blur-sm rounded-2xl p-4 border border-steel text-center hover:border-electric transition-colors duration-300">
+                            <span class="block text-3xl font-display font-bold text-violet">120+</span>
+                            <span class="text-sm text-silver">Bugs Found</span>
+                        </div>
+                        <div class="bg-slate/50 backdrop-blur-sm rounded-2xl p-4 border border-steel text-center hover:border-electric transition-colors duration-300">
+                            <span class="block text-3xl font-display font-bold text-amber">5+</span>
+                            <span class="text-sm text-silver">Projects</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="relative py-24 lg:py-32 overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-b from-charcoal via-midnight to-charcoal"></div>
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-violet/30 to-transparent"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="font-mono text-violet text-sm tracking-widest uppercase">What I Do</span>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-snow mt-4">Technical Skills</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-violet to-coral mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <!-- Skills Categories -->
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- QA & Testing -->
+                <div class="group bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-3xl p-8 border border-steel hover:border-electric transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-14 h-14 bg-electric/10 rounded-2xl flex items-center justify-center group-hover:bg-electric/20 transition-colors">
+                            <i data-lucide="bug" class="w-7 h-7 text-electric"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-snow">Software Testing & QA</h3>
+                            <p class="text-silver text-sm">Manual & Automation Testing</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <!-- Testing Types -->
+                        <div>
+                            <h4 class="text-sm font-mono text-electric mb-3">Testing Types</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-electric transition-colors">Smoke</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-electric transition-colors">Sanity</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-electric transition-colors">Functional</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-electric transition-colors">Integration</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-electric transition-colors">Regression</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-electric transition-colors">System</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-electric transition-colors">Performance</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-electric transition-colors">Usability</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Tools -->
+                        <div>
+                            <h4 class="text-sm font-mono text-electric mb-3">Tools & Frameworks</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-electric/10 rounded-lg text-sm text-electric border border-electric/30">Selenium WebDriver</span>
+                                <span class="px-3 py-1.5 bg-electric/10 rounded-lg text-sm text-electric border border-electric/30">TestNG</span>
+                                <span class="px-3 py-1.5 bg-electric/10 rounded-lg text-sm text-electric border border-electric/30">JIRA</span>
+                                <span class="px-3 py-1.5 bg-electric/10 rounded-lg text-sm text-electric border border-electric/30">Postman</span>
+                                <span class="px-3 py-1.5 bg-electric/10 rounded-lg text-sm text-electric border border-electric/30">Swagger</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Concepts -->
+                        <div>
+                            <h4 class="text-sm font-mono text-electric mb-3">Methodologies</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">STLC</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">SDLC</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">Agile/Scrum</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">BVA</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">Equivalence Partitioning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Development -->
+                <div class="group bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-3xl p-8 border border-steel hover:border-violet transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-14 h-14 bg-violet/10 rounded-2xl flex items-center justify-center group-hover:bg-violet/20 transition-colors">
+                            <i data-lucide="code-2" class="w-7 h-7 text-violet"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-snow">Development</h3>
+                            <p class="text-silver text-sm">MERN Stack & Java</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <!-- Languages -->
+                        <div>
+                            <h4 class="text-sm font-mono text-violet mb-3">Languages</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-violet/10 rounded-lg text-sm text-violet border border-violet/30">Java</span>
+                                <span class="px-3 py-1.5 bg-violet/10 rounded-lg text-sm text-violet border border-violet/30">JavaScript</span>
+                                <span class="px-3 py-1.5 bg-violet/10 rounded-lg text-sm text-violet border border-violet/30">HTML5</span>
+                                <span class="px-3 py-1.5 bg-violet/10 rounded-lg text-sm text-violet border border-violet/30">CSS3</span>
+                                <span class="px-3 py-1.5 bg-violet/10 rounded-lg text-sm text-violet border border-violet/30">SQL</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Frameworks -->
+                        <div>
+                            <h4 class="text-sm font-mono text-violet mb-3">Frameworks & Libraries</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-violet transition-colors">React.js</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-violet transition-colors">Node.js</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-violet transition-colors">Express.js</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-violet transition-colors">Java Swing</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-violet transition-colors">JavaFX</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel hover:border-violet transition-colors">JSP</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Tools -->
+                        <div>
+                            <h4 class="text-sm font-mono text-violet mb-3">Tools</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">Git</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">GitHub</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">Figma</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">Canva</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">Tomcat</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Database -->
+                <div class="group bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-3xl p-8 border border-steel hover:border-neon transition-all duration-500" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-14 h-14 bg-neon/10 rounded-2xl flex items-center justify-center group-hover:bg-neon/20 transition-colors">
+                            <i data-lucide="database" class="w-7 h-7 text-neon"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-snow">Database Management</h3>
+                            <p class="text-silver text-sm">SQL & NoSQL Databases</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-sm font-mono text-neon mb-3">Databases</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-neon/10 rounded-lg text-sm text-neon border border-neon/30">MongoDB</span>
+                                <span class="px-3 py-1.5 bg-neon/10 rounded-lg text-sm text-neon border border-neon/30">MySQL</span>
+                                <span class="px-3 py-1.5 bg-neon/10 rounded-lg text-sm text-neon border border-neon/30">Oracle</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-sm font-mono text-neon mb-3">Skills</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">SQL Queries</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">Data Verification</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">JDBC</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">Database Testing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Analysis -->
+                <div class="group bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-3xl p-8 border border-steel hover:border-amber transition-all duration-500" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-14 h-14 bg-amber/10 rounded-2xl flex items-center justify-center group-hover:bg-amber/20 transition-colors">
+                            <i data-lucide="bar-chart-3" class="w-7 h-7 text-amber"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-snow">Data Analysis</h3>
+                            <p class="text-silver text-sm">Analytics & Visualization</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-sm font-mono text-amber mb-3">Tools</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-amber/10 rounded-lg text-sm text-amber border border-amber/30">Python</span>
+                                <span class="px-3 py-1.5 bg-amber/10 rounded-lg text-sm text-amber border border-amber/30">Excel (Advanced)</span>
+                                <span class="px-3 py-1.5 bg-amber/10 rounded-lg text-sm text-amber border border-amber/30">Power BI</span>
+                                <span class="px-3 py-1.5 bg-amber/10 rounded-lg text-sm text-amber border border-amber/30">RStudio</span>
+                                <span class="px-3 py-1.5 bg-amber/10 rounded-lg text-sm text-amber border border-amber/30">Orange</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-sm font-mono text-amber mb-3">Techniques</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">Regression Analysis</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">Time Series</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">Data Visualization</span>
+                                <span class="px-3 py-1.5 bg-midnight/50 rounded-lg text-sm text-pearl border border-steel">ETL Processes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Soft Skills -->
+            <div class="mt-12" data-aos="fade-up" data-aos-delay="500">
+                <div class="bg-gradient-to-r from-slate/30 via-charcoal/30 to-slate/30 backdrop-blur-sm rounded-3xl p-8 border border-steel">
+                    <h3 class="font-display text-xl font-bold text-snow mb-6 text-center">Soft Skills</h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="flex items-center gap-2 px-4 py-2 bg-midnight/50 rounded-full border border-steel">
+                            <i data-lucide="eye" class="w-4 h-4 text-electric"></i>
+                            <span class="text-pearl text-sm">Attention to Detail</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-midnight/50 rounded-full border border-steel">
+                            <i data-lucide="lightbulb" class="w-4 h-4 text-amber"></i>
+                            <span class="text-pearl text-sm">Problem Solving</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-midnight/50 rounded-full border border-steel">
+                            <i data-lucide="users" class="w-4 h-4 text-violet"></i>
+                            <span class="text-pearl text-sm">Team Collaboration</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-midnight/50 rounded-full border border-steel">
+                            <i data-lucide="clock" class="w-4 h-4 text-neon"></i>
+                            <span class="text-pearl text-sm">Time Management</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-midnight/50 rounded-full border border-steel">
+                            <i data-lucide="message-circle" class="w-4 h-4 text-coral"></i>
+                            <span class="text-pearl text-sm">Communication</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-midnight/50 rounded-full border border-steel">
+                            <i data-lucide="award" class="w-4 h-4 text-electric"></i>
+                            <span class="text-pearl text-sm">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="relative py-24 lg:py-32 overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-b from-charcoal via-midnight to-charcoal"></div>
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-coral/30 to-transparent"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="font-mono text-coral text-sm tracking-widest uppercase">My Journey</span>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-snow mt-4">Professional Experience</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-coral to-amber mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <!-- Timeline -->
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-8 lg:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-electric via-violet to-coral"></div>
+                
+                <!-- Experience 1 - Research Analyst -->
+                <div class="relative mb-12" data-aos="fade-up">
+                    <div class="flex flex-col lg:flex-row lg:items-center">
+                        <!-- Timeline Dot -->
+                        <div class="absolute left-8 lg:left-1/2 w-4 h-4 bg-electric rounded-full transform -translate-x-1/2 ring-4 ring-midnight z-10"></div>
+                        
+                        <!-- Content -->
+                        <div class="lg:w-1/2 lg:pr-12 lg:text-right ml-20 lg:ml-0">
+                            <div class="bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-3xl p-8 border border-steel hover:border-electric transition-all duration-500">
+                                <div class="flex items-center gap-3 justify-start lg:justify-end mb-4">
+                                    <span class="px-3 py-1 bg-electric/10 text-electric text-sm font-mono rounded-full">Mar 2025 - Present</span>
+                                    <span class="w-2 h-2 bg-neon rounded-full animate-pulse"></span>
+                                </div>
+                                <h3 class="font-display text-2xl font-bold text-snow mb-2">Research Analyst</h3>
+                                <p class="text-electric font-semibold mb-4">Royal Research, India</p>
+                                <ul class="space-y-3 text-silver text-sm">
+                                    <li class="flex items-start gap-2 justify-start lg:justify-end">
+                                        <span class="lg:order-2"><i data-lucide="check-circle" class="w-4 h-4 text-neon mt-0.5"></i></span>
+                                        <span>Collaborated with cross-functional teams in software development, data science, UI/UX, and networking</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 justify-start lg:justify-end">
+                                        <span class="lg:order-2"><i data-lucide="check-circle" class="w-4 h-4 text-neon mt-0.5"></i></span>
+                                        <span>Created front and back end components in Java (Swing), JavaScript and Tomcat</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 justify-start lg:justify-end">
+                                        <span class="lg:order-2"><i data-lucide="check-circle" class="w-4 h-4 text-neon mt-0.5"></i></span>
+                                        <span>Carried out exhaustive API testing with Postman; UI interface integration with Figma</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 justify-start lg:justify-end">
+                                        <span class="lg:order-2"><i data-lucide="check-circle" class="w-4 h-4 text-neon mt-0.5"></i></span>
+                                        <span>Conducted data processing and managed databases (MySQL, MongoDB)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience 2 - QSpiders -->
+                <div class="relative mb-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex flex-col lg:flex-row lg:items-center">
+                        <!-- Timeline Dot -->
+                        <div class="absolute left-8 lg:left-1/2 w-4 h-4 bg-violet rounded-full transform -translate-x-1/2 ring-4 ring-midnight z-10"></div>
+                        
+                        <!-- Content - Right Side on Desktop -->
+                        <div class="lg:w-1/2 lg:ml-auto lg:pl-12 ml-20 lg:ml-auto">
+                            <div class="bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-3xl p-8 border border-steel hover:border-violet transition-all duration-500">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <span class="px-3 py-1 bg-violet/10 text-violet text-sm font-mono rounded-full">Jun 2024 - Feb 2025</span>
+                                </div>
+                                <h3 class="font-display text-2xl font-bold text-snow mb-2">Software Testing Trainee</h3>
+                                <p class="text-violet font-semibold mb-4">QSpiders, Kolkata</p>
+                                <ul class="space-y-3 text-silver text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-neon mt-0.5 flex-shrink-0"></i>
+                                        <span>Designed and executed <span class="text-electric font-semibold">600+ comprehensive test cases</span> including functional, regression, and system testing</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-neon mt-0.5 flex-shrink-0"></i>
+                                        <span>Logged and tracked <span class="text-electric font-semibold">120+ bugs using JIRA</span>; improved overall product stability by 20%</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-neon mt-0.5 flex-shrink-0"></i>
+                                        <span>Automation scripts created and maintained using <span class="text-electric font-semibold">Selenium WebDriver</span> for enhanced testing efficiency</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-neon mt-0.5 flex-shrink-0"></i>
+                                        <span>Participated in <span class="text-electric font-semibold">Agile sprints</span>, daily SCRUM meetings, and handled complete defect lifecycle management</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="relative py-24 lg:py-32 overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-b from-charcoal via-midnight to-charcoal"></div>
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon/30 to-transparent"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="font-mono text-neon text-sm tracking-widest uppercase">My Work</span>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-snow mt-4">Featured Projects</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-neon to-electric mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 - ShopperStack -->
+                <div class="group relative bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-steel hover:border-electric transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
+                    <!-- Project Image/Visual -->
+                    <div class="relative h-48 bg-gradient-to-br from-electric/20 to-violet/20 overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="shopping-cart" class="w-20 h-20 text-electric/40 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-electric/20 backdrop-blur-sm text-electric text-xs font-mono rounded-full">Testing</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-silver text-sm font-mono">Jul 2024 - Dec 2024</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-snow mb-3 group-hover:text-electric transition-colors">ShopperStack.com</h3>
+                        <p class="text-silver text-sm mb-4 leading-relaxed">E-commerce Testing Project - Comprehensive QA testing covering UI functionality, backend validation, and end-to-end workflows.</p>
+                        
+                        <!-- Stats -->
+                        <div class="flex gap-4 mb-4">
+                            <div class="text-center">
+                                <span class="block text-lg font-bold text-electric">200+</span>
+                                <span class="text-xs text-silver">Test Cases</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="block text-lg font-bold text-coral">50+</span>
+                                <span class="text-xs text-silver">Defects Found</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Tech Stack -->
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">Swagger</span>
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">REST API</span>
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">Manual Testing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 - Daawat-e-Ishq -->
+                <div class="group relative bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-steel hover:border-neon transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-48 bg-gradient-to-br from-neon/20 to-amber/20 overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="utensils" class="w-20 h-20 text-neon/40 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-neon/20 backdrop-blur-sm text-neon text-xs font-mono rounded-full">Live</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-silver text-sm font-mono">MERN Stack</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-snow mb-3 group-hover:text-neon transition-colors">Daawat-e-Ishq</h3>
+                        <p class="text-silver text-sm mb-4 leading-relaxed">Real-time restaurant website built with React, Node.js, MongoDB Atlas, JSX, and CSS.</p>
+                        
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">React</span>
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">Node.js</span>
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">MongoDB Atlas</span>
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">JSX</span>
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">CSS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 - Event Management System -->
+                <div class="group relative bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-steel hover:border-violet transition-all duration-500" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative h-48 bg-gradient-to-br from-violet/20 to-coral/20 overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="calendar-days" class="w-20 h-20 text-violet/40 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="px-3 py-1 bg-violet/20 backdrop-blur-sm text-violet text-xs font-mono rounded-full">Development</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-silver text-sm font-mono">Feb 2025 - Apr 2025</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-snow mb-3 group-hover:text-violet transition-colors">Event Management System</h3>
+                        <p class="text-silver text-sm mb-4 leading-relaxed">Desktop application for managing events, user registrations, and data records with comprehensive testing.</p>
+                        
+                        <!-- Features -->
+                        <ul class="space-y-1 mb-4 text-xs text-silver">
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3 h-3 text-neon"></i>
+                                <span>Java Swing GUI</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3 h-3 text-neon"></i>
+                                <span>MySQL Backend via JDBC</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i data-lucide="check" class="w-3 h-3 text-neon"></i>
+                                <span>Functional Testing</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">Java</span>
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">Swing</span>
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">MySQL</span>
+                            <span class="px-2 py-1 bg-midnight/50 rounded text-xs text-pearl">JDBC</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- More Projects CTA -->
+            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="500">
+                <a href="https://github.com/soumyo1234" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-slate/50 backdrop-blur-sm border border-steel rounded-full text-snow font-semibold hover:border-electric hover:text-electric transition-all duration-300">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                    View More on GitHub
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education" class="relative py-24 lg:py-32 overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-b from-charcoal via-midnight to-charcoal"></div>
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber/30 to-transparent"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="font-mono text-amber text-sm tracking-widest uppercase">My Background</span>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-snow mt-4">Education & Certifications</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-amber to-coral mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Education -->
+                <div data-aos="fade-right">
+                    <h3 class="font-display text-2xl font-bold text-snow mb-8 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-amber/10 rounded-xl flex items-center justify-center">
+                            <i data-lucide="graduation-cap" class="w-5 h-5 text-amber"></i>
+                        </div>
+                        Education
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <!-- B.Tech -->
+                        <div class="bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-2xl p-6 border border-steel hover:border-amber transition-all duration-300">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h4 class="font-display text-lg font-bold text-snow">B.Tech in Civil Engineering</h4>
+                                    <p class="text-amber font-semibold">Techno International Batanagar</p>
+                                </div>
+                                <span class="px-3 py-1 bg-amber/10 text-amber text-sm font-mono rounded-full">2020-2024</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex-1 h-2 bg-midnight rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-amber to-coral rounded-full" style="width: 84%"></div>
+                                </div>
+                                <span class="text-snow font-bold">CGPA: 8.40</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- Certifications & Achievements -->
+                <div data-aos="fade-left">
+                    <h3 class="font-display text-2xl font-bold text-snow mb-8 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-neon/10 rounded-xl flex items-center justify-center">
+                            <i data-lucide="award" class="w-5 h-5 text-neon"></i>
+                        </div>
+                        Certifications & Achievements
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Hackathon -->
+                        <div class="group bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-2xl p-6 border border-steel hover:border-coral transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <div class="w-16 h-16 bg-coral/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-coral/20 transition-colors">
+                                    <i data-lucide="trophy" class="w-8 h-8 text-coral"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-display text-lg font-bold text-snow">2nd Place - Inter-College Hackathon</h4>
+                                    <p class="text-silver text-sm mt-1">Created functional prototype in 4-member team (2023)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Google Analytics -->
+                        <div class="group bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-2xl p-6 border border-steel hover:border-electric transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <div class="w-16 h-16 bg-electric/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-electric/20 transition-colors">
+                                    <i data-lucide="bar-chart" class="w-8 h-8 text-electric"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-display text-lg font-bold text-snow">Google Analytics Certified</h4>
+                                    <p class="text-silver text-sm mt-1">Mastery in ETL processes, data visualizations, and reporting</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Scam Awareness -->
+                        <div class="group bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-2xl p-6 border border-steel hover:border-violet transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <div class="w-16 h-16 bg-violet/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-violet/20 transition-colors">
+                                    <i data-lucide="shield-check" class="w-8 h-8 text-violet"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-display text-lg font-bold text-snow">Scam Awareness Program</h4>
+                                    <p class="text-silver text-sm mt-1">Specialized in online scam detection and reporting mechanisms</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- QSpiders Training -->
+                        <div class="group bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-2xl p-6 border border-steel hover:border-neon transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <div class="w-16 h-16 bg-neon/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-neon/20 transition-colors">
+                                    <i data-lucide="bug" class="w-8 h-8 text-neon"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-display text-lg font-bold text-snow">Software Testing Professional Training</h4>
+                                    <p class="text-silver text-sm mt-1">9 months intensive training at QSpiders, Kolkata</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-24 lg:py-32 overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-b from-charcoal via-midnight to-midnight"></div>
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-electric/30 to-transparent"></div>
+        
+        <!-- Animated Background Elements -->
+        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-electric/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-violet/5 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="font-mono text-electric text-sm tracking-widest uppercase">Get In Touch</span>
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-snow mt-4">Let's Work Together</h2>
+                <p class="text-silver text-lg mt-4 max-w-2xl mx-auto">
+                    I'm currently available for freelance work and full-time positions. 
+                    If you have a project in mind or just want to chat, feel free to reach out!
+                </p>
+                <div class="w-24 h-1 bg-gradient-to-r from-electric to-violet mx-auto mt-6 rounded-full"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <!-- Contact Info -->
+                <div data-aos="fade-right">
+                    <h3 class="font-display text-2xl font-bold text-snow mb-8">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Email -->
+                        <a href="mailto:soumyo8317@gmail.com" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-2xl p-6 border border-steel hover:border-electric transition-all duration-300">
+                            <div class="w-14 h-14 bg-electric/10 rounded-2xl flex items-center justify-center group-hover:bg-electric/20 transition-colors">
+                                <i data-lucide="mail" class="w-6 h-6 text-electric"></i>
+                            </div>
+                            <div>
+                                <p class="text-silver text-sm">Email</p>
+                                <p class="text-snow font-semibold group-hover:text-electric transition-colors">soumyo8317@gmail.com</p>
+                            </div>
+                        </a>
+                        
+                        <!-- Phone -->
+                        <a href="tel:+918101130288" class="group flex items-center gap-4 bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-2xl p-6 border border-steel hover:border-violet transition-all duration-300">
+                            <div class="w-14 h-14 bg-violet/10 rounded-2xl flex items-center justify-center group-hover:bg-violet/20 transition-colors">
+                                <i data-lucide="phone" class="w-6 h-6 text-violet"></i>
+                            </div>
+                            <div>
+                                <p class="text-silver text-sm">Phone</p>
+                                <p class="text-snow font-semibold group-hover:text-violet transition-colors">+91 8101130288</p>
+                            </div>
+                        </a>
+                        
+                        <!-- Location -->
+                        <div class="flex items-center gap-4 bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-2xl p-6 border border-steel">
+                            <div class="w-14 h-14 bg-neon/10 rounded-2xl flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-neon"></i>
+                            </div>
+                            <div>
+                                <p class="text-silver text-sm">Location</p>
+                                <p class="text-snow font-semibold">Kolkata, West Bengal, India</p>
+                            </div>
+                        </div>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/soul_archived/" target="_blank" class="group flex items-center gap-4 bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-2xl p-6 border border-steel hover:border-coral transition-all duration-300">
+                            <div class="w-14 h-14 bg-coral/10 rounded-2xl flex items-center justify-center group-hover:bg-coral/20 transition-colors">
+                                <i data-lucide="instagram" class="w-6 h-6 text-coral"></i>
+                            </div>
+                            <div>
+                                <p class="text-silver text-sm">Instagram</p>
+                                <p class="text-snow font-semibold group-hover:text-coral transition-colors">@soul_archived</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="mt-10">
+                        <h4 class="text-snow font-semibold mb-4">Connect with me</h4>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/soumyo1234" target="_blank" class="w-14 h-14 bg-slate/50 backdrop-blur-sm rounded-2xl flex items-center justify-center text-silver hover:text-snow hover:bg-electric/20 border border-steel hover:border-electric transition-all duration-300">
+                                <i data-lucide="github" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/soumyojitsadhu" target="_blank" class="w-14 h-14 bg-slate/50 backdrop-blur-sm rounded-2xl flex items-center justify-center text-silver hover:text-snow hover:bg-electric/20 border border-steel hover:border-electric transition-all duration-300">
+                                <i data-lucide="linkedin" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://www.instagram.com/soul_archived/" target="_blank" class="w-14 h-14 bg-slate/50 backdrop-blur-sm rounded-2xl flex items-center justify-center text-silver hover:text-snow hover:bg-coral/20 border border-steel hover:border-coral transition-all duration-300">
+                                <i data-lucide="instagram" class="w-6 h-6"></i>
+                            </a>
+                            <a href="mailto:soumyo8317@gmail.com" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-slate/50 backdrop-blur-sm rounded-2xl flex items-center justify-center text-silver hover:text-snow hover:bg-electric/20 border border-steel hover:border-electric transition-all duration-300">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                  
+
+                    <!-- UPI Payment QR -->
+                    <div class="mt-6 bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-2xl p-6 border border-steel">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+                            <div>
+                                <p class="text-silver text-sm">Support my work</p>
+                                <p class="text-snow font-semibold">UPI Payment QR</p>
+                            </div>
+                            <a href="upi://pay?pa=soumyo8317@oksbi&pn=Soumyojit%20Sadhu&cu=INR" class="inline-flex items-center gap-2 text-amber hover:text-coral transition-colors font-semibold">
+                                <i data-lucide="wallet" class="w-4 h-4"></i>
+                                Pay via UPI
+                            </a>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-center gap-6">
+                            <img src="assets/upi-qr.png" alt="UPI QR code for payments" class="w-40 h-40 rounded-2xl bg-snow p-3 shadow-lg shadow-amber/10">
+                            <div class="text-center sm:text-left">
+                                <p class="text-snow font-semibold">UPI ID: <span class="text-amber">soumyo8317@oksbi</span></p>
+                                <p class="text-silver text-sm leading-relaxed mt-2">Scan to pay with any UPI app.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div data-aos="fade-left">
+                    <form id="contact-form" class="bg-gradient-to-br from-slate/50 to-charcoal/50 backdrop-blur-sm rounded-3xl p-8 border border-steel">
+                        <div class="space-y-6">
+                            <!-- Name -->
+                            <div>
+                                <label for="name" class="block text-snow font-medium mb-2">Your Name</label>
+                                <input type="text" id="name" name="name" required 
+                                    class="w-full px-4 py-3 bg-midnight/50 border border-steel rounded-xl text-snow placeholder-silver focus:outline-none focus:border-electric transition-colors"
+                                    placeholder="John Doe">
+                            </div>
+                            
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="block text-snow font-medium mb-2">Your Email</label>
+                                <input type="email" id="email" name="email" required 
+                                    class="w-full px-4 py-3 bg-midnight/50 border border-steel rounded-xl text-snow placeholder-silver focus:outline-none focus:border-electric transition-colors"
+                                    placeholder="john@example.com">
+                            </div>
+                            
+                            <!-- Subject -->
+                            <div>
+                                <label for="subject" class="block text-snow font-medium mb-2">Subject</label>
+                                <input type="text" id="subject" name="subject" required 
+                                    class="w-full px-4 py-3 bg-midnight/50 border border-steel rounded-xl text-snow placeholder-silver focus:outline-none focus:border-electric transition-colors"
+                                    placeholder="Project Inquiry">
+                            </div>
+                            
+                            <!-- Message -->
+                            <div>
+                                <label for="message" class="block text-snow font-medium mb-2">Message</label>
+                                <textarea id="message" name="message" rows="5" required 
+                                    class="w-full px-4 py-3 bg-midnight/50 border border-steel rounded-xl text-snow placeholder-silver focus:outline-none focus:border-electric transition-colors resize-none"
+                                    placeholder="Tell me about your project..."></textarea>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <button type="submit" 
+                                class="w-full py-4 bg-gradient-to-r from-electric to-violet text-midnight font-bold rounded-xl flex items-center justify-center gap-3 hover:shadow-xl hover:shadow-electric/30 transform hover:-translate-y-1 transition-all duration-300">
+                                <span>Send Message</span>
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="relative py-12 overflow-hidden">
+        <div class="absolute inset-0 bg-midnight"></div>
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-steel to-transparent"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-electric to-violet rounded-xl flex items-center justify-center">
+                        <span class="font-display font-bold text-xl text-midnight">SS</span>
+                    </div>
+                    <div>
+                        <p class="font-display font-semibold text-snow">Soumyojit Sadhu</p>
+                        <p class="text-silver text-sm">QA Tester & Developer</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <nav class="flex flex-wrap justify-center gap-6">
+                    <a href="#about" class="text-silver hover:text-electric transition-colors">About</a>
+                    <a href="#skills" class="text-silver hover:text-electric transition-colors">Skills</a>
+                    <a href="#experience" class="text-silver hover:text-electric transition-colors">Experience</a>
+                    <a href="#projects" class="text-silver hover:text-electric transition-colors">Projects</a>
+                    <a href="#contact" class="text-silver hover:text-electric transition-colors">Contact</a>
+                </nav>
+                
+                <!-- Copyright -->
+                <div class="text-center lg:text-right">
+                    <p class="text-silver text-sm">
+                        Â© <span id="year"></span> Soumyojit Sadhu. All rights reserved.
+                    </p>
+                    <p class="text-silver/60 text-xs mt-1">
+                        Designed & Built By <span class="text-coral">Soumyo</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-electric text-midnight rounded-full flex items-center justify-center shadow-lg shadow-electric/30 opacity-0 invisible transform translate-y-4 transition-all duration-300 z-50 hover:bg-violet">
+        <i data-lucide="chevron-up" class="w-6 h-6"></i>
+    </button>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
