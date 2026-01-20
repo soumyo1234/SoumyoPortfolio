@@ -470,6 +470,7 @@ textarea:focus-visible {
         linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
     background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
     animation: gridMove 20s linear infinite;
+    opacity: 0.55;
 }
 
 @keyframes gridMove {
@@ -483,7 +484,7 @@ textarea:focus-visible {
     height: 500px;
     border-radius: 50%;
     position: relative;
-    opacity: 0.15;
+    opacity: 0.12;
 }
 
 .jarvis-radar::before {
@@ -616,6 +617,7 @@ textarea:focus-visible {
     border-radius: 4px;
     background: rgba(0, 212, 255, 0.05);
     animation: dataPointBlink 3s ease-in-out infinite;
+    opacity: 0.5;
 }
 
 .jarvis-data-points .data-point::before {
@@ -644,6 +646,7 @@ textarea:focus-visible {
         rgba(0, 212, 255, 0.01) 2px,
         rgba(0, 212, 255, 0.01) 4px
     );
+    opacity: 0.4;
 }
 
 /* ==================== JARVIS HUD CORNERS ==================== */
@@ -663,6 +666,7 @@ textarea:focus-visible {
     inset: 0;
     overflow: hidden;
     pointer-events: none;
+    opacity: 0.5;
 }
 
 .h-line {
@@ -960,6 +964,13 @@ textarea:focus-visible {
     .jarvis-radar {
         width: 300px;
         height: 300px;
+    }
+
+    .jarvis-grid,
+    .jarvis-lines,
+    .jarvis-scanlines,
+    .particle {
+        display: none;
     }
     
     .jarvis-core {

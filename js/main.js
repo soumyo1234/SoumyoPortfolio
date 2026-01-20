@@ -350,6 +350,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // ==================== FEATURED PROJECT LINKS ==================== //
+    const projectCards = document.querySelectorAll('[data-project-url]');
+
+    projectCards.forEach(card => {
+        const url = card.dataset.projectUrl;
+        if (!url) return;
+
+        card.addEventListener('click', () => {
+            window.location.href = url;
+        });
+
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                window.location.href = url;
+            }
+        });
+    });
+
     // ==================== LAZY LOADING IMAGES ==================== //
     const lazyImages = document.querySelectorAll('img[data-src]');
     
@@ -377,8 +396,10 @@ document.addEventListener('DOMContentLoaded', function() {
 function initJarvisParticles() {
     const particleContainer = document.getElementById('particles');
     if (!particleContainer) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(max-width: 768px)').matches) return;
     
-    const particleCount = 50;
+    const particleCount = 30;
     
     for (let i = 0; i < particleCount; i++) {
         createParticle(particleContainer);
